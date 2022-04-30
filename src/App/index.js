@@ -2,6 +2,7 @@ import React from "react";
 import './App.css'
 
 import { useTodos } from "./useTodos";
+import { TodoHeader } from "../components/TodoHeader";
 import { TodoCounter } from "../components/TodoCounter";
 import { TodoSearch } from "../components/TodoSearch";
 import { TodoList } from "../components/TodoList";
@@ -23,19 +24,20 @@ function App() {
     completedTodos,
     searchValue, 
     setSearchValue,
-    saveTodo,
     addTodo,
   } = useTodos();
   return (
     <div className="App">
-      <TodoCounter
-        totalTodos={totalTodos} 
-        completedTodos={completedTodos}
-      />
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
+      <TodoHeader>
+        <TodoCounter
+          totalTodos={totalTodos} 
+          completedTodos={completedTodos}
+        />
+        <TodoSearch
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+      </TodoHeader>
       <TodoList>
         {error && <p>Hubo un error</p>}
         {loading && <p>Estamos cargando, no desesperes...</p>}
@@ -52,7 +54,10 @@ function App() {
       </TodoList>
       {openModal && (
         <Modal>
-          <TodoForm/>
+          <TodoForm
+            addTodo={addTodo}
+            setOpenModal={setOpenModal}
+          />
         </Modal>
       )}
 

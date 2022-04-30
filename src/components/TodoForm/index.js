@@ -1,12 +1,7 @@
 import React from "react";
-<<<<<<< HEAD:src/components/TodoForm/index.js
-import { TodoContext } from "../TodoContext";
-=======
->>>>>>> 31431f9:src/TodoForm/index.js
 import './TodoForm.css';
 
 function TodoForm({
-  saveTodo,
   addTodo,
   setOpenModal
 }) {
