@@ -18,6 +18,7 @@
 
   transform: rotate(0);
   transition: .3s ease;
+  /* this allow us to have the button at the front */
   z-index: 1;
 }
 
