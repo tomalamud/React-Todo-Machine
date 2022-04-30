@@ -1,7 +1,11 @@
 import React from 'react';
 import './TodoSearch.css';
 
+<<<<<<< HEAD
 function TodoSearch({ searchValue, setSearchValue }) {
+=======
+function TodoSearch({ searchValue, setSearchValue }) {  
+>>>>>>> 31431f9
   const onSearchValueChange = (event) => {
     console.log(event.target.value);
     // setSearch(event.target.value)
