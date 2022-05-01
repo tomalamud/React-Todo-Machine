@@ -10,6 +10,7 @@ import { TodoItem } from "../components/TodoItem";
 import { TodoButton } from "../components/TodoButton";
 import { TodoForm } from "../components/TodoForm";
 import { Modal } from "../components/modal";
+import { ChangeAlertWithStorageListener } from "../components/ChangeAlert";
 
 function App() { 
   const {
@@ -25,6 +26,7 @@ function App() {
     searchValue, 
     setSearchValue,
     addTodo,
+    syncronizeTodos,
   } = useTodos();
   return (
     <div className="App">
@@ -82,6 +84,10 @@ function App() {
       )}
 
       <TodoButton setOpenModal={setOpenModal} text="Abriste el modal!"/>
+    
+      <ChangeAlertWithStorageListener 
+        syncronize={syncronizeTodos}
+      />
     </div>
   );
 }

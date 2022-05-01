@@ -1,10 +1,10 @@
 import React from "react";
 
-// Custom ReactHook
 function useLocalStorage(itemName, initialValue) {
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
   const [item, setItem] = React.useState(initialValue);
+  const [syncronized, setSyncronized] = React.useState(true);
 
   React.useEffect(()=>{
     setTimeout(()=>{
@@ -21,14 +21,13 @@ function useLocalStorage(itemName, initialValue) {
   
         setItem(parsedItem)
         setLoading(false);
+        setSyncronized(true);
       } catch (error) {
         setError(error);
       }
     }, 1000)
-  }, []);
+  }, [syncronized]);
 
-  // No está en el useEffect porque no se ejecutará por defecto,
-  // Nos permitirá cambiar el estado general del storage y del componente..
   const saveItem = (newItem) => {
     try {
       const stringifiedItem = JSON.stringify(newItem);
@@ -40,11 +39,17 @@ function useLocalStorage(itemName, initialValue) {
     
   };
 
+  const syncronize = () => {
+    setLoading(true);
+    setSyncronized(false);
+  }
+
   return {
     item, 
     saveItem,
     loading,
     error,
+    syncronize,
   };
 }
 
